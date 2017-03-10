@@ -1,24 +1,23 @@
 <?php
 error_reporting(E_ALL); ini_set('display_errors', '1');
-include 'path.php';
 
 #################################################################################
 
 function distribute(){
 	$chPath='chromosomes/';
 	$opPath='operations/';
-if(filesize($opPath."OPERATIONS.txt")!=0){
-	recordAndSendTask();
-}
-else if(filesize($opPath."TEMPOPR.txt")!=0){
-	rename($opPath."OPERATIONS.txt",$opPath."OPERATIONS1.txt");
-	rename($opPath."TEMPOPR.txt",$opPath."OPERATIONS.txt");
-	rename($opPath."OPERATIONS1.txt",$opPath."TEMPOPR.txt");
-	recordAndSendTask();
-}
-else{
-	echo "Successful";
-}
+	if(filesize($opPath."OPERATIONS.txt")!=0){
+		recordAndSendTask();
+	}
+	else if(filesize($opPath."TEMPOPR.txt")!=0){
+		rename($opPath."OPERATIONS.txt",$opPath."OPERATIONS1.txt");
+		rename($opPath."TEMPOPR.txt",$opPath."OPERATIONS.txt");
+		rename($opPath."OPERATIONS1.txt",$opPath."TEMPOPR.txt");
+		recordAndSendTask();
+	}
+	else{
+		echo "Successful";
+	}
 }
 
 #################################################################################
@@ -59,6 +58,8 @@ function recordAndSendTask(){
 	fclose($han1);
 	$finalData=$initialOff."#".$finalOff."#".$str."#".$ch."#".$sequence;
 	echo $finalData;
+	
+
 }
 
 #####################################################################################

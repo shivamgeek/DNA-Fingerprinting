@@ -11,6 +11,7 @@ function createTextFiles(){
 	$han=fopen($opPath."RESULT.txt","w");fwrite($han,'');fclose($han);
 }
 
+############################################################################
 
 function addOperations($initialOff,$finalOff,$str,$ch)
 {
@@ -38,7 +39,7 @@ function createOperation()
 {
 	$chPath='chromosomes/';
 	$opPath='operations/';
-	$chunkSize=5000;
+	$chunkSize=5000000;
 	$initialOff=1;
 	
 	

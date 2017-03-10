@@ -1,0 +1,20 @@
+<html>
+<head>
+<title>Welcome to Homepage</title>
+</head>
+<body>
+
+<h2 align="center"> DNA FINGERPRINTING USING DISTRIBUTED COMPUTING </h2><br>
+
+Please Enter Number of times you wish to<br> donate your CPU cycles
+<input type="text" name="iter" id="iter"/><br>
+<button onclick="location.href='process.html?iter='+getIter();''">Send Data</button>
+
+<script>
+function getIter(){
+return document.getElementById('iter').value;
+}
+
+</script>
+</body>
+</html>
