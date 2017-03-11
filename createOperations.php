@@ -3,6 +3,7 @@ error_reporting(E_ALL); ini_set('display_errors', '1');
 
 ############################################################################
 
+
 function createTextFiles(){
 	$chPath='chromosomes/';
 	$opPath='operations/';
@@ -39,7 +40,7 @@ function createOperation()
 {
 	$chPath='chromosomes/';
 	$opPath='operations/';
-	$chunkSize=5000000;
+	$chunkSize=20000000;
 	$initialOff=1;
 	
 	
@@ -72,21 +73,6 @@ createTextFiles();
 createOperation();
 createResultFile();
 echo 'done creating operations file';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
