@@ -1,5 +1,6 @@
 <?php
 error_reporting(E_ALL); ini_set('display_errors', '1');
+ini_set('memory_limit', '-1');
 
 ############################################################################
 
@@ -40,7 +41,7 @@ function createOperation()
 {
 	$chPath='chromosomes/';
 	$opPath='operations/';
-	$chunkSize=20000000;
+	$chunkSize=6000000;
 	$initialOff=1;
 	
 	
