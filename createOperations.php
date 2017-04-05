@@ -41,7 +41,7 @@ function createOperation()
 {
 	$chPath='chromosomes/';
 	$opPath='operations/';
-	$chunkSize=6000000;
+	$chunkSize=10000000;
 	$initialOff=1;
 	
 	
