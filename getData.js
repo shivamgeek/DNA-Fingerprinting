@@ -6,6 +6,7 @@ function getData(){
 		if(xtp.readyState==4 && xtp.status==200){
 			data=xtp.responseText;
 			//doneLoading();
+
 			}
 			
 	};

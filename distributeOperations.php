@@ -17,7 +17,7 @@ function distribute(){
 		recordAndSendTask();
 	}
 	else{
-		echo "Successful";
+		echo "end";
 	}
 }
 
@@ -44,9 +44,10 @@ function recordAndSendTask(){
 	$chPath='chromosomes/';
 	$opPath='operations/';
 	$han=fopen($opPath.'OPERATIONS.txt',"r");
+	
 	$opr=fgets($han);
 	appendToTemp($opr);
-	deleteOperation($opr);
+	deleteOperation($opr);	
 	$oprs=explode(" ",$opr);
 	fclose($han);
 	$initialOff=$oprs[0];
@@ -56,6 +57,10 @@ function recordAndSendTask(){
 	$han1=fopen($chPath.'ch-'.$ch,"r");
 	fseek($han1,$initialOff);
 	$sequence=fread($han1,($finalOff-$initialOff+1));
+	#fseek($han1,10000002);
+	#$log=("sequence ".$sequence[0].$sequence[1].$sequence[2].$sequence[3]);
+	#$seq2=fread($han1,4);
+	#echo "<script>console.log( 'Debug Objects: " . $log . " " . $seq2 .");</script>";
 	fclose($han1);
 	$finalData=$initialOff."#".$finalOff."#".$str."#".$ch."#".$sequence;
 	echo $finalData;

@@ -11,7 +11,7 @@ document.getElementById('change').innerHTML=change;
 }
 
 function showImage(pic){
-	document.getElementById('loading').innerHTML='<img src="graphics/'+pic+'"></img>';
+	document.getElementById('loading').innerHTML='<img height='+60+'% width ='+60+'% src="graphics/'+pic+'"></img>';
 }
 
 function completed(){
@@ -29,11 +29,20 @@ function run(){
 	begin(iter);
 }
 
+function verify() {
+	//completed();
+	var verifying = new Worker("verifyOp.js");
+	verifying.onmessage=function(event) {
+		var data=event.data;
+		document.getElementById('change').innerHTML=data;
+	}
+}
+
 function begin(iter){
 	if(iter>0){
 	completed();
-	
-	var data;
+		document.getElementById('iterations').innerHTML="Iteration Left: "+iter;
+		var data;
 	
 		var downloading = new Worker("getData.js");
 		changeName("DOWNLOADING DATA");
@@ -41,6 +50,10 @@ function begin(iter){
 
 		downloading.onmessage=function(event){
 			var downloadedData=event.data;
+			if(downloadedData!="end"){
+				
+			
+			
 			changeName("PROCESSING DATA");
 			showImage("processing1.gif");
 			var processing=new Worker("computeSTR.js");
@@ -48,6 +61,7 @@ function begin(iter){
 
 			processing.onmessage=function(event){
 				var processedData=event.data;
+				//console.log("data processed :"+processedData);
 				var sending=new Worker("sendData.js");
 				showImage("uploading1.gif");
 				sending.postMessage(processedData);
@@ -58,10 +72,21 @@ function begin(iter){
 					begin(--iter);
 				}
 			}
+			}
+		else{
+				iter=0;
+				document.getElementById('iterations').innerHTML="";
+				showImage("done1.gif");
+				changeName("The DNA Fingerprinting procedure has already been completed!");
+			}
+
 	}
 
 
-		}	 
+		}	 else{
+			document.getElementById('iterations').innerHTML="No more Iterations";
+			document.getElementById('thanks').innerHTML="Thank you for donating CPU Cycles!";
+		}
 
 	
 	}

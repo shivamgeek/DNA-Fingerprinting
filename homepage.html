@@ -2,19 +2,26 @@
 <head>
 <title>Welcome to Homepage</title>
 </head>
-<body>
+<body bgcolor="#99ccff">
 <div id='change'></div>
 <h2 align="center"> DNA FINGERPRINTING USING DISTRIBUTED COMPUTING </h2><br>
 
 Please Enter Number of times you wish to<br> donate your CPU cycles
-<input type="text" name="iter" id="iter"/><br>
-<button onclick="location.href='process.html?iter='+getIter();''">Send Data</button>
+<input type="number"  name="iter"  id="iter"/>
+<button onclick="if(getIter()==-1){ location.href='homepage.html' }else{ location.href='process.html?iter='+getIter();''} ">Start</button><br>
+<br>
+<h4>Already done processing?</h4>
+Perform identification from the database:
+<button onclick="location.href='process.html'">Identify</button>
 
 <script>
 function getIter(){
-return document.getElementById('iter').value;
+	var x=document.getElementById('iter').value;
+	if(x>0 && x<=200){
+		return x;
+	}
+alert("Please enter a value between 1 and 200");return -1;
 }
-
 </script>
 
 

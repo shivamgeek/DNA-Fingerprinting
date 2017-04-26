@@ -3,13 +3,33 @@
 	<title>Process Data</title>
 </head>
 <script src='control.js'></script>
-<body>
-<div id='change'></div>
+<body bgcolor="#99ccff">
+<h3 id="thanks"></h3>
+<b><div id='iterations' align="center"></div>
 <div id='loading' align="center"></div>
-<button id='start' onclick="run();">Begin</button>
-<button id='home' onclick="location.href='homepage.html'"" >Go Home</button>
+<div id='change' align="center" ></div></b>
+<center>
+<button id='start' onclick="run();" ><h4>Start Processing of Data</h4></button><br>
+<button id='verify' onclick="verify();"><h4>Match Fingerprint With Database</h4></button><p>
+<button id='home'  onclick="location.href='homepage.html'"" ><h3>Go Home</h3></button></p>
+</center>
 <script>
 document.getElementById('home').style.visibility="hidden";
+var iter=location.search;
+if(iter=="") {
+    
+    document.getElementById('start').style.visibility="hidden";
+    document.getElementById('home').style.visibility="visible";
+
+    document.getElementById('thanks').innerHTML="Thank you for donating CPU Cycles!";
+
+}else {
+    document.getElementById('verify').style.visibility="hidden";
+}
+
+//console.log(iter);
+//document.getElementById('start').style.visibility="hidden";
+//document.getElementById('verify').style.visibility="hidden";
 </script>
 
 
